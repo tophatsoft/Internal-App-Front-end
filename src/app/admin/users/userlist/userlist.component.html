@@ -1,0 +1,29 @@
+<mat-accordion class="alignHeader userList">
+    <mat-expansion-panel *ngFor="let user of userList">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{user.firstName}} {{user.lastName}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{user.registeredDate}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list role="list">
+            <mat-list-item>
+                Email: {{user.email}}
+            </mat-list-item>
+            <mat-list-item>
+                User Name: {{user.userName}}
+            </mat-list-item>
+            <mat-list-item>
+                Department: {{user.department}}
+            </mat-list-item>
+            <mat-list-item>
+                Position: {{user.position}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <button mat-raised-button>Details</button>
+        <button mat-raised-button color="warn">Delete</button>
+    </mat-expansion-panel>
+</mat-accordion>

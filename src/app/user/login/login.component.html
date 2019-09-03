@@ -1,0 +1,19 @@
+<section class="view backImg" fxLayout="column" fxLayoutAlign="center center">
+        <div class="full-bg-img mask rgba-gradient">
+               
+<mat-card align="center" class="loginForm">
+        <mat-card-title><h4><mat-icon aria-hidden="false">supervisor_account</mat-icon> Login</h4></mat-card-title>
+        <mat-divider></mat-divider><br>
+        <form [formGroup]="form" (ngSubmit)="auth.login(form.value)">
+            <mat-form-field>
+                <input matInput placeholder="User Name" formControlName="userName" type="text">
+            </mat-form-field><br>
+            <mat-form-field>
+                <input matInput placeholder="Password" type="password" formControlName="password">
+            </mat-form-field><br><br>
+            <mat-divider></mat-divider><br>
+            <button mat-raised-button color="primary" [disabled]="!form.valid">Login</button>
+        </form>
+    </mat-card>
+</div>
+</section>

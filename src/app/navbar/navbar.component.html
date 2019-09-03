@@ -1,0 +1,19 @@
+<mat-toolbar *ngIf="guard.isAuthenticated" class="navbar">
+        <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSidenav.emit()">
+                <mat-icon>menu</mat-icon>
+              </button>
+        <span style="flex: 1 1 auto"></span>
+        <p>{{user}}</p>
+        
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon>settings_application</mat-icon></button>
+        <mat-menu #menu="matMenu">
+                <button *ngIf="!guard.isAdmin" routerLink="/changepass" mat-menu-item>Change Pass</button>
+                <button (click)="guard.logout()" mat-menu-item> Sign Out</button>
+              </mat-menu>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-card *ngIf="!passChanged" align="center" style="color: red">
+          <p >PLEASE CHANGE YOUR PASSWORD, Link provided in email</p>
+        </mat-card>

@@ -1,0 +1,17 @@
+.loginForm {
+   
+    background-color: rgba(229, 228, 255, 0.2);
+   
+    
+}
+.loginForm {
+    width: 400px;
+    
+}
+
+.view {
+    height: 70vh !important;
+  }
+  body, html {
+    height: 100%;
+  }

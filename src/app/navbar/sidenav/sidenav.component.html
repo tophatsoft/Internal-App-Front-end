@@ -1,0 +1,38 @@
+<app-navbar (toggleSidenav)="navigationSidenav.toggle()"></app-navbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #navigationSidenav #sidenav mode="over" role="navigation">
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <h2> Condica </h2>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-nav-list>
+            <h2 matSubheader>News</h2>
+            <a (click)="navigationSidenav.close()" mat-list-item routerLink='/'>
+                <mat-icon matListIcon class="app-nav-list-icon">home</mat-icon>Home
+            </a>
+            <a (click)="navigationSidenav.close()" mat-list-item routerLink='/chat'>
+                <mat-icon matListIcon class="app-nav-list-icon">chat</mat-icon>Chat
+            </a>
+            <h2 matSubheader>Work</h2>
+            <a (click)="navigationSidenav.close()" *ngIf="!guard.isAdmin" mat-list-item routerLink='/main'>
+                <mat-icon matListIcon class="app-nav-list-icon">create</mat-icon>Condica
+            </a>
+            <a (click)="navigationSidenav.close()" *ngIf="guard.isAdmin" mat-list-item routerLink='/register'>
+                <mat-icon matListIcon class="app-nav-list-icon">person</mat-icon>Register User
+            </a>
+            <a (click)="navigationSidenav.close()" *ngIf="guard.isAdmin" mat-list-item routerLink='/dashboard'>
+                <mat-icon matListIcon class="app-nav-list-icon">create</mat-icon>Condica
+            </a>
+            <a (click)="navigationSidenav.close()" *ngIf="guard.isAdmin" mat-list-item routerLink='/userlist'>
+                <mat-icon matListIcon class="app-nav-list-icon">person_pin</mat-icon>Users
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

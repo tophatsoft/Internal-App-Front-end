@@ -1,0 +1,103 @@
+<mat-card *ngIf="errorMessage" align="center" style="color: red">
+    <p>Don't forget to Clock In</p>
+</mat-card>
+<mat-toolbar class="mainComp clockTB" style="height:100px">     <!-- makes entire page unresponsive -->
+    <!-- <mat-form-field class="fullwidth ">
+        <input matInput [matDatepicker]="picker" (dateChange)="currentPeriodClicked()" [(ngModel)]="filter.month"
+            name="search" placeholder="Filter By Date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker panelClass="example-month-picker" startView="multi-year"> </mat-datepicker>
+        <input matInput>
+    </mat-form-field> -->
+        <mat-form-field>
+            <mat-label>Year</mat-label>
+            <mat-select panelClass="panelColor" [(ngModel)]="filter.year" name="year">
+                <mat-option *ngFor="let year of lastYears" [value]="year">
+                    {{year}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field >
+            <mat-label>Month</mat-label>
+            <mat-select panelClass="panelColor" [(ngModel)]="filter.month" name="month">
+                <mat-option *ngFor="let month of monthList" [value]="month">
+                    {{month}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    <mat-icon (click)="onSearch()">search</mat-icon>
+    <span style="flex: 1 1 auto"></span>
+    <button id="showMe" (click)="OpenClockInDialog()" mat-raised-button color="primary" *ngIf=!model>Clock In</button>
+    <button (click)="OpenClockOutDialog()" mat-raised-button color="warn"
+        *ngIf="model && model.secondEntry == model.firstEntry">Clock
+        Out</button>
+    <span style="flex: 1.58 1 auto"></span>
+    <button mat-raised-button color="primary" (click)=exportUserPdf()>Export Table</button>
+
+</mat-toolbar>
+
+<!-- table -->
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <div fxFlex="50%">
+        <table mat-table [dataSource]="checkin" class="mat-elevation-z8 tableComp">
+
+            <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- day Column -->
+            <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef> Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+            </ng-container>
+
+            <!--  clockin Column -->
+            <ng-container matColumnDef="FirstEntry">
+                <th mat-header-cell *matHeaderCellDef> First Entry </th>
+                <td mat-cell *matCellDef="let element"> {{element.firstEntry}} </td>
+            </ng-container>
+
+            <!-- clockout Column -->
+            <ng-container matColumnDef="SecondEntry">
+                <th mat-header-cell *matHeaderCellDef> Second Entry </th>
+                <td mat-cell *matCellDef="let element"> {{element.secondEntry}} </td>
+            </ng-container>
+
+            <!-- Symbol Column
+            <ng-container matColumnDef="More">
+                <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
+                <td mat-cell *matCellDef="let element">
+
+                    <mat-icon (click)="openDialog(element)" aria-hidden="false" aria-label="Example home icon">edit
+                    </mat-icon>
+
+                    <mat-icon aria-hidden="false" (click)="app.deleteEntry(element.id)" aria-label="Example home icon">
+                        delete
+                    </mat-icon>
+                </td>
+            </ng-container> -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <!-- other half of the page -->
+    <div fxFlex="50%">
+        <mat-card align="center" class="tableComp">
+            <mat-card-title>Worked Hours</mat-card-title>
+            <mat-card-subtitle>Month</mat-card-subtitle>
+            <mat-card-content>
+                <p *ngIf="weeklyHours">
+                    {{weeklyHours.mHours}} Hours
+                </p>
+            </mat-card-content>
+        </mat-card>
+        <mat-card align="center" class="tableComp">
+            <mat-card-title>Worked Hours</mat-card-title>
+            <mat-card-subtitle>Year</mat-card-subtitle>
+            <mat-card-content>
+                <p *ngIf="yearlyHours">
+                    {{yearlyHours.mHours}} Hours
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+        <div fxFlex="60%">
+            <table mat-table [dataSource]="usersEntries" class="mat-elevation-z8 tableComp">
+    
+                <!--- Note that these columns can be defined in any order.
+                              The actual rendered columns are set as a property on the row definition" -->
+    
+                <!-- day Column -->
+                <ng-container matColumnDef="UserName">
+                        <th mat-header-cell *matHeaderCellDef> User Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+                    </ng-container>
+                <ng-container matColumnDef="Date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+                </ng-container>
+    
+                <!--  clockin Column -->
+                <ng-container matColumnDef="FirstEntry">
+                    <th mat-header-cell *matHeaderCellDef> First Entry </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstEntry}} </td>
+                </ng-container>
+    
+                <!-- clockout Column -->
+                <ng-container matColumnDef="SecondEntry">
+                    <th mat-header-cell *matHeaderCellDef> Second Entry </th>
+                    <td mat-cell *matCellDef="let element"> {{element.secondEntry}} </td>
+                </ng-container>
+    
+                <!-- Symbol Column
+                <ng-container matColumnDef="More">
+                    <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
+                    <td mat-cell *matCellDef="let element">
+    
+                        <mat-icon (click)="openDialog(element)" aria-hidden="false" aria-label="Example home icon">edit
+                        </mat-icon>
+    
+                        <mat-icon aria-hidden="false" (click)="app.deleteEntry(element.id)" aria-label="Example home icon">
+                            delete
+                        </mat-icon>
+                    </td>
+                </ng-container> -->
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+        <div fxFlex="40%">
+                <mat-card align="center" class="tableComp">
+                    <mat-card-title>Worked Hours</mat-card-title>
+                    <mat-card-subtitle>Month</mat-card-subtitle>
+                    <mat-card-content>
+                        
+                    </mat-card-content>
+                </mat-card>
+                <mat-card align="center" class="tableComp">
+                    <mat-card-title>Worked Hours</mat-card-title>
+                    <mat-card-subtitle>Year</mat-card-subtitle>
+                    <mat-card-content>
+                      
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>

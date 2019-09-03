@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+  }
+
+  mat-icon {
+      cursor: pointer;
+  }
+
+
+ .clockTB {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.267) !important;
+ }
+ 
+  .panelColor.mat-select-panel {
+    background:  rgba(242, 204, 190, 0.932);
+  }
+
+  .tableComp {
+    background-color: rgba(229, 228, 255, 0.315);
+  }
+
+  

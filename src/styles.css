@@ -1,0 +1,28 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html, body, app-root {
+    height: 100%;
+    margin: 0;
+
+    background-image:
+    linear-gradient(45deg, rgba(242, 34, 51, 0.247), rgba(255, 188, 54, 0.295) 100%),
+     url("/assets/home-background-1-1.jpg");
+  
+    
+
+    position: fixed;
+    min-width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-size: cover
+    }
+  
+
+    .mainComp {
+        background-color: rgba(229, 228, 255, 0.315);
+        width: 600px;
+    }
+
+    .view {
+        height: 60vh !important;
+      }
