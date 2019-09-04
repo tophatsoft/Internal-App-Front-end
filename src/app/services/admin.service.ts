@@ -29,8 +29,19 @@ export class AdminService {
   usersList() {
    return this.http.get("http://localhost:54425/api/applicationuser/userlist")
   }
-  getUsersEntry(userName,year, startMonth, endMonth) {
-    return this.http.get("http://localhost:54425/api/checkin/adcondica?username=" + userName +"&year=" + year+"&startmonth=" + startMonth+"&endmonth=" + endMonth)
+  getUsersEntry(userName, startDate, endDate) {
+    return this.http.get("http://localhost:54425/api/checkin/adcondica?username=" + userName +"&startDate=" + startDate+"&endDate=" + endDate)
   }
+  monthlyHours(userName, startDate,endDate) {
+    return this.http.get("http://localhost:54425/api/checkin/adtotalmonth?username=" + userName +"&startDate=" + startDate+"&endDate=" + endDate )
+  }
+  yearlyHours(userName) {
+    return this.http.get("http://localhost:54425/api/checkin/adtotalyear?username="+userName)
+  }
+
+  addUserEntry(model) {
+    return this.http.post("http://localhost:54425/api/checkin/adduserentry", model).subscribe(res =>  this.snackBar.open("Entry Added","X",{duration: 2999}))
+  }
+
 
 }

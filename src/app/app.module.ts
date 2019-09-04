@@ -43,12 +43,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidenavComponent } from './navbar/sidenav/sidenav.component';
 import { UserlistComponent } from './admin/users/userlist/userlist.component';
 import { AdmainComponent } from './admin/admain/admain.component';
+import { AddialogComponent } from './admin/admain/dialog/addialog.component';
+
 
 
 @NgModule({
 
   declarations: [
     AppComponent,
+    AddialogComponent,
     NavbarComponent,
     HomeComponent,
     LoginComponent,
@@ -97,7 +100,9 @@ import { AdmainComponent } from './admin/admain/admain.component';
 
   ],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
+    AddialogComponent
+    
   ],
   providers: [{
 
