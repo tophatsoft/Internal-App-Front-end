@@ -1,18 +1,25 @@
-<mat-dialog-content class="text">
+    <h2 *ngIf="data.id" mat-dialog-title align="center">Update Entry</h2>
+    <h2 *ngIf="!data.id" mat-dialog-title align="center">Add entry</h2>
+
+<mat-dialog-content class="text dialogColor">
         <form>
-                <mat-form-field>
+                <h4 *ngIf="data.id">User: {{data.userName}}</h4>
+                <h4 *ngIf="data.id">Date: {{data.day}}</h4>
+                <mat-form-field *ngIf="!data.id">
                         <mat-label>User</mat-label>
-                        <mat-select [(ngModel)]="data.username" name="username">
+                        <mat-select [(ngModel)]="data.userName" name="userName">
                             <mat-option *ngFor="let user of allUsers" [value]="user.userName">
                                 {{user.userName}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field><br>
-            <mat-form-field class="fullwidth">
-                <input matInput [(ngModel)]="data.day" name="day" [matDatepicker]="picker" placeholder="Choose a date" required>
+                
+            <mat-form-field class="fullwidth" *ngIf="!data.id">
+                <input matInput [(ngModel)]="data.day" name="day" [matDatepicker]="picker" placeholder="Choose a date" required disabled>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #picker disabled="false" panelClass="example-month-picker" startView="multi-year"></mat-datepicker>
             </mat-form-field><br> 
+           
             <mat-form-field class="fullwidth">
                 <div class="24hr-example">
                     <input matInput [(ngModel)]="data.firstEntry" name="firstEntry" placeholder="First Entry"

@@ -44,7 +44,7 @@ import { SidenavComponent } from './navbar/sidenav/sidenav.component';
 import { UserlistComponent } from './admin/users/userlist/userlist.component';
 import { AdmainComponent } from './admin/admain/admain.component';
 import { AddialogComponent } from './admin/admain/dialog/addialog.component';
-
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -65,6 +65,7 @@ import { AddialogComponent } from './admin/admain/dialog/addialog.component';
     SidenavComponent,
     UserlistComponent,
     AdmainComponent,
+    FooterComponent,
     
   ],
   imports: [

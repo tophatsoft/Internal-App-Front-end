@@ -11,7 +11,7 @@ userList;
   constructor(private admin: AdminService) { }
 
   ngOnInit() {
-    this.admin.usersList().subscribe(res => this.userList = res)
+    this.admin.usersList().subscribe(res => (this.userList = res, console.log(res)))
   }
 
 }

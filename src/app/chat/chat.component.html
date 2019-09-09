@@ -1,35 +1,28 @@
+<div class="container" *ngIf="messages">
 
-      
-        <div class="container" *ngIf="messages">
-        
-                
-                <cdk-virtual-scroll-viewport itemSize="40" class="example-viewport">
-                        <div *cdkVirtualFor="let message of messages" class="example-item">{{message.senderName}} : {{message.text}}</div>
-                        <div id="your_div"></div>
-                      </cdk-virtual-scroll-viewport>
-               
-            
-       
-        </div>
-        <mat-card align="center" class="chatComp">
-                <h1>
-                  La Cafea!
-                </h1>
-                <div class="container">
-                
-                  <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
-                        <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Message" [(ngModel)]="message" name="message">
-                              </mat-form-field>
-                    <button mat-button type="submit" id="sendmessage" [disabled]="!chatForm.valid">
-                            <mat-icon aria-hidden="false" aria-label="Example home icon">send
-                                </mat-icon>
-                    </button>
-                  </form>
-                </div>
-    </mat-card>
-    
-    <!-- <div class="App">
+
+  <cdk-virtual-scroll-viewport itemSize="40" class="example-viewport">
+    <div *cdkVirtualFor="let message of messages" class="example-item">{{message.senderName}} : {{message.text}}</div>
+    <div id="your_div"></div>
+  </cdk-virtual-scroll-viewport>
+</div>
+<mat-card align="center" class="chatComp">
+  <h1>
+    La Cafea!
+  </h1>
+  <div class="container">
+    <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Message" [(ngModel)]="message" name="message">
+      </mat-form-field>
+      <button mat-button type="submit" id="sendmessage" [disabled]="!chatForm.valid">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">send
+        </mat-icon>
+      </button>
+    </form>
+  </div>
+</mat-card>
+<!-- <div class="App">
     <main class="chat-window">
             <header class="chat-header">
               <h1>Chat</h1>
@@ -50,4 +43,3 @@
             </footer>
           </main>
           </div> -->
-      

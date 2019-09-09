@@ -1,4 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 html, body, app-root {
     height: 100%;
     margin: 0;
@@ -11,6 +12,7 @@ html, body, app-root {
 
     position: fixed;
     min-width: 100%;
+    min-height: 100%;
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
@@ -20,7 +22,7 @@ html, body, app-root {
 
     .mainComp {
         background-color: rgba(229, 228, 255, 0.315);
-        width: 600px;
+        width: 400px;
     }
 
     .view {

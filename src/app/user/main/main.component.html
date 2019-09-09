@@ -1,7 +1,9 @@
 <mat-card *ngIf="errorMessage" align="center" style="color: red">
     <p>Don't forget to Clock In</p>
 </mat-card>
-<mat-toolbar class="mainComp clockTB" style="height:100px">     <!-- makes entire page unresponsive -->
+<div fxLayout="column">
+        <div fxFlex="50%">
+<mat-card class="navbar clockTB" style="height:50px">     <!-- makes entire page unresponsive -->
     <!-- <mat-form-field class="fullwidth ">
         <input matInput [matDatepicker]="picker" (dateChange)="currentPeriodClicked()" [(ngModel)]="filter.month"
             name="search" placeholder="Filter By Date">
@@ -25,21 +27,25 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    <mat-icon (click)="onSearch()">search</mat-icon>
-    <span style="flex: 1 1 auto"></span>
-    <button id="showMe" (click)="OpenClockInDialog()" mat-raised-button color="primary" *ngIf=!model>Clock In</button>
-    <button (click)="OpenClockOutDialog()" mat-raised-button color="warn"
-        *ngIf="model && model.secondEntry == model.firstEntry">Clock
-        Out</button>
-    <span style="flex: 1.58 1 auto"></span>
-    <button mat-raised-button color="primary" (click)=exportUserPdf()>Export Table</button>
+    <mat-icon style="vertical-align: middle;" (click)="onSearch()">search</mat-icon>
 
-</mat-toolbar>
+    <mat-card-actions style="float: right">
+            <button id="showMe" (click)="OpenClockInDialog()" mat-raised-button color="primary" *ngIf=!model>Clock In</button>
+            <button id="showMe"  align="center" (click)="OpenClockOutDialog()" mat-raised-button color="warn"
+                *ngIf="model && model.secondEntry == model.firstEntry">Clock
+                Out</button>     
+            <button mat-raised-button color="primary" (click)=exportUserPdf()>Export Table</button>
+        </mat-card-actions>
+                   
 
+</mat-card>
+</div>
+<br>
 <!-- table -->
-<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
-    <div fxFlex="50%">
-        <table mat-table [dataSource]="checkin" class="mat-elevation-z8 tableComp">
+<div fxFlex="50%">
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%">
+    <div fxFlex="50%" class="tableContainer mat-elevation-z8">
+        <table mat-table [dataSource]="checkin" class="tableComp">
 
             <!--- Note that these columns can be defined in any order.
                           The actual rendered columns are set as a property on the row definition" -->
@@ -61,20 +67,6 @@
                 <th mat-header-cell *matHeaderCellDef> Second Entry </th>
                 <td mat-cell *matCellDef="let element"> {{element.secondEntry}} </td>
             </ng-container>
-
-            <!-- Symbol Column
-            <ng-container matColumnDef="More">
-                <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
-                <td mat-cell *matCellDef="let element">
-
-                    <mat-icon (click)="openDialog(element)" aria-hidden="false" aria-label="Example home icon">edit
-                    </mat-icon>
-
-                    <mat-icon aria-hidden="false" (click)="app.deleteEntry(element.id)" aria-label="Example home icon">
-                        delete
-                    </mat-icon>
-                </td>
-            </ng-container> -->
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
@@ -100,4 +92,6 @@
             </mat-card-content>
         </mat-card>
     </div>
+</div>
+</div>
 </div>

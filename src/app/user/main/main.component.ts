@@ -38,30 +38,10 @@ export class MainComponent implements OnInit {
     "November",
     "December"
   ]
-userName;
+  userName;
   displayedColumns: string[] = ['Date', 'FirstEntry', 'SecondEntry'];
   dataSource = this.checkin;  //links data to table
   constructor(private app: AppService, private dialog: MatDialog, private auth: AuthenticationService) { }
-
-  // //dialog for update entry
-  // openDialog(element): void {
-  //   this.app.selectEntry(element)
-  //   const dialogConfig = new MatDialogConfig();
-
-  //   dialogConfig.disableClose = false;
-  //   dialogConfig.autoFocus = true;
-  //   //sends data to the dialog component
-  //   dialogConfig.data = {
-  //     id: this.model.id,
-  //     day: this.model.day,
-  //     firstEntry: this.model.firstEntry,
-  //     secondEntry: this.model.secondEntry
-
-  //   }
-
-  //   this.dialog.open(DialogComponent, dialogConfig);
-  // }
-
 
   ngOnInit() {
     console.log(this.filter)
@@ -79,9 +59,8 @@ userName;
     //return month and year summ
     this.app.monthlyHours(this.filter.year, this.filter.month).subscribe(res => this.weeklyHours = res)
     this.app.yearlyHours(this.filter.year).subscribe(res => this.yearlyHours = res)
-   
+
   }
- 
 
   onSearch() {
 
@@ -129,7 +108,7 @@ userName;
   }
   //pdf export function
   exportUserPdf() {
-    this.auth.userSelected.subscribe(user =>this.userName = user )
+    this.auth.userSelected.subscribe(user => this.userName = user)
     var doc = new JSPdf();
     var rows = [];
     var year;

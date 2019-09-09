@@ -19,4 +19,10 @@ table {
     background-color: rgba(229, 228, 255, 0.315);
   }
 
-  
+  .navbar {
+    background: transparent !important
+  }
+  .tableContainer {
+    overflow: auto !important;
+    max-height: 600px !important;
+  }

@@ -2,23 +2,21 @@ mat-sidenav-container {
     height: 100%;
     margin: 0;
 
-    background-image:
-    linear-gradient(45deg, rgba(242, 34, 51, 0.247), rgba(255, 188, 54, 0.295) 100%),
-     url("/assets/home-background-1-1.jpg");
-  
-    
+    background: transparent !important;
 
     position: fixed;
     min-width: 100%;
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
-    background-size: cover
+    background-size: cover;
+
 }
 
 mat-sidenav {
     width: 200px;
 }
+
 
 
 .toolbar-title {
@@ -34,4 +32,21 @@ mat-sidenav {
   margin: 0 12px 0 12px;
 }
 
+.iconColor:hover {
+  color: #3f51b5
+}
 
+.iconColor svg:hover{
+  fill: #3f51b5
+}
+footer {
+  position: fixed;
+  
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(95, 95, 95, 0.623);
+  color: white;
+  text-align: center;
+  margin: 0px;
+}

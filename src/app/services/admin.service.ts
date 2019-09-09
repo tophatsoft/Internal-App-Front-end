@@ -40,8 +40,23 @@ export class AdminService {
   }
 
   addUserEntry(model) {
-    return this.http.post("http://localhost:54425/api/checkin/adduserentry", model).subscribe(res =>  this.snackBar.open("Entry Added","X",{duration: 2999}))
+    return this.http.post("http://localhost:54425/api/checkin/adduserentry", model).subscribe(res =>  (this.snackBar.open("Entry Added","X",{duration: 2999})))
   }
 
+ 
+  updateUserEntry(model) {
+    return this.http.put("http://localhost:54425/api/checkin/adupdateentry", model).subscribe(res =>  (this.snackBar.open("Entry Updated","X",{duration: 2999})))
+  }
+  deleteUserEntry(id) {
+    
+      return this.http.delete("http://localhost:54425/api/checkin/addeleteentry/" +id)
+    
+  }
+  deleteUser(userName) {
+    if(confirm("Delete this user?")) {
+      console.log(userName)
+      return this.http.delete("http://localhost:54425/api/applicationuser/deleteuser/" + userName).subscribe(res =>  (this.snackBar.open("User Deleted","X",{duration: 2999})))
+    }
+  }
 
 }

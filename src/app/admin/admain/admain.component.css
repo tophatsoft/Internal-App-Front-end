@@ -8,12 +8,22 @@ table {
   mat-icon {
     cursor: pointer;
 }
-
-
-.clockTB {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.267) !important;
+.cardComp {
+ 
+    background-color: rgba(229, 228, 255, 0.315);
+  
+  
 }
 
-.panelColor.mat-select-panel {
+/* .panelColor.mat-select-panel {
   background:  rgba(242, 204, 190, 0.932);
+} */
+
+.navbar {
+  background: transparent !important;
+}
+
+.tableContainer {
+  overflow: auto !important;
+  max-height: 600px !important;
 }
